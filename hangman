@@ -66,20 +66,29 @@ print(attempts[0] + "\n")
 
 dashes = "_ " * length_word
 
-print(dashes,)
+print(dashes)
 
-letters_of_secret = [l for l in secret_word]
+letters_of_secret = [letter for letter in secret_word]
 num_attempts = 0
 
-# returns a list of the all indexs that guessed letter in secret word
+
 def find_placement(guess):
+    # returns a list of the all indexs that guessed letter in secret word
     lst = []
     for letter in range(len(letters_of_secret)):
         if letters_of_secret[letter] == guess:
             lst.append(letter)
     return lst
 
-    
+
+def updated_guess(dashes, lst_guess, guess):
+    # returns list of guessed placements
+    lst = dashes.split()
+
+    for i in range(len(lst_guess)):
+        lst[lst_guess[i]] = guess
+    return lst
+
 
 while length_word > 0 and num_attempts <= 6:
     guess = input("guess -> ")
@@ -92,6 +101,7 @@ while length_word > 0 and num_attempts <= 6:
     else:
         length_word -= 1
         print("good job")
-        print(find_placement(guess))
-
+        
     print(attempts[num_attempts])
+    print(updated_guess(dashes, find_placement(guess), guess))
+    
