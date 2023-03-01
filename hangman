@@ -83,14 +83,25 @@ def find_placement(guess):
 
 def updated_guess(dashes, lst_guess, guess):
     # returns list of guessed placements
-    lst = dashes.split()
+    lst = dashes[::]
 
     for i in range(len(lst_guess)):
         lst[lst_guess[i]] = guess
     return lst
 
 
-while length_word > 0 and num_attempts <= 6:
+dashes = dashes.split()
+
+while length_word > 0:
+    if "".join(dashes) == secret_word:
+        print("you win")
+        break
+    if num_attempts == 5:
+        print("your last attempt")
+    elif num_attempts == 6:
+        print("you lose")
+        break
+
     guess = input("guess -> ")
 
     assert len(guess) == 1, "one word guess. bro do you know how to play?"
@@ -101,7 +112,10 @@ while length_word > 0 and num_attempts <= 6:
     else:
         length_word -= 1
         print("good job")
-        
+
     print(attempts[num_attempts])
-    print(updated_guess(dashes, find_placement(guess), guess))
-    
+    # print(updated_guess(dashes, find_placement(guess), guess))
+    dashes = updated_guess(dashes, find_placement(guess), guess)
+    for space in dashes:
+        print(space, end=" ")
+    print()
