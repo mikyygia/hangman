@@ -2,17 +2,79 @@ print()
 print("welcome to hangman!", end="")
 
 secret_word = "winter"
+length_word = len(secret_word)
 
-stand = """
-------
-|    |
-|
-|
+stand_1 = """
+-------
+ |    |
+ |
+ |
+ |
 --- """
 
-print(stand)
+stand_2 = """
+-------
+ |    |
+ |    O
+ |
+ |
+--- """
 
-word_length = len(secret_word)
+stand_3 = """
+-------
+ |    |
+ |    O
+ |    l
+ |
+--- """
 
-for word in range(word_length):
+stand_4 = """
+-------
+ |    |
+ |    O
+ |    l
+ |   /
+--- """
+
+stand_5 = """
+-------
+ |    |
+ |    O
+ |    l
+ |   / \\
+--- """
+
+stand_6 = """
+-------
+ |    |
+ |  \ O
+ |    l
+ |   / \\
+--- """
+
+stand_7 = """
+-------
+ |    |
+ |  \ O /
+ |    l
+ |   / \\
+--- """
+
+print(stand_6 + "\n")
+
+for word in range(length_word):
     print("_", end=" ")
+
+
+letters_of_secret = [word for word in secret_word]
+
+while length_word > 0:
+    guess = input("-> ")
+
+    assert len(guess) == 1, "one word guess. bro do you know how to play?"
+    
+    if guess not in letters_of_secret:
+        print("wrong")
+        
+    
+
