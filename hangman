@@ -47,7 +47,7 @@ stand_5 = """
 stand_6 = """
 -------
  |    |
- |  \ O
+ |  \\ O
  |    l
  |   / \\
 --- """
@@ -55,7 +55,7 @@ stand_6 = """
 stand_7 = """
 -------
  |    |
- |  \ O /
+ |  \\ O /
  |    l
  |   / \\
 --- """
@@ -73,7 +73,7 @@ num_attempts = 0
 
 
 def find_placement(guess):
-    # returns a list of the all indexs that guessed letter in secret word
+    # returns a list of the all indexs that guessed letter occurs in secret
     lst = []
     for letter in range(len(letters_of_secret)):
         if letters_of_secret[letter] == guess:
@@ -82,7 +82,7 @@ def find_placement(guess):
 
 
 def updated_guess(dashes, lst_guess, guess):
-    # returns list of guessed placements
+    # updates and returns list of guessed placements
     lst = dashes[::]
 
     for i in range(len(lst_guess)):
@@ -114,7 +114,6 @@ while length_word > 0:
         print("good job")
 
     print(attempts[num_attempts])
-    # print(updated_guess(dashes, find_placement(guess), guess))
     dashes = updated_guess(dashes, find_placement(guess), guess)
     for space in dashes:
         print(space, end=" ")
