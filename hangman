@@ -1,7 +1,7 @@
 print()
 print("welcome to hangman!", end="")
 
-secret_word = "banana"
+secret_word = "i love you"
 length_word = len(secret_word)
 
 stand_1 = """
@@ -102,7 +102,7 @@ while length_word > 0:
         print("you lose")
         break
 
-    guess = input("guess -> ")
+    guess = input("\nguess -> ")
 
     assert len(guess) == 1, "one word guess. bro do you know how to play?"
 
@@ -111,7 +111,7 @@ while length_word > 0:
         print("you're wrong")
     else:
         length_word -= 1
-        print("good job")
+        print(f"good job {guess} is right!", end="")
 
     print(attempts[num_attempts])
     dashes = updated_guess(dashes, find_placement(guess), guess)
