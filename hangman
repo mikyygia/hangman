@@ -1,0 +1,18 @@
+print()
+print("welcome to hangman!", end="")
+
+secret_word = "winter"
+
+stand = """
+------
+|    |
+|
+|
+--- """
+
+print(stand)
+
+word_length = len(secret_word)
+
+for word in range(word_length):
+    print("_", end=" ")
