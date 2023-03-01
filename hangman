@@ -60,21 +60,28 @@ stand_7 = """
  |   / \\
 --- """
 
-print(stand_6 + "\n")
+attempts = [stand_1, stand_2, stand_3, stand_4, stand_5, stand_6, stand_7]
+
+print(attempts[0] + "\n")
 
 for word in range(length_word):
     print("_", end=" ")
 
+print()
 
 letters_of_secret = [word for word in secret_word]
+num_attempts = 0
 
-while length_word > 0:
+while length_word > 0 and num_attempts <= 6:
     guess = input("-> ")
 
     assert len(guess) == 1, "one word guess. bro do you know how to play?"
-    
-    if guess not in letters_of_secret:
-        print("wrong")
-        
-    
 
+    if guess not in letters_of_secret:
+        num_attempts += 1
+        print("wrong")
+    else:
+        length_word -= 1
+        print("good job")
+
+    print(attempts[num_attempts])
